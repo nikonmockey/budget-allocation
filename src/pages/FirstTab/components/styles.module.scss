@@ -1,0 +1,40 @@
+.container {
+  margin-bottom: 52px;
+  width: 240px;
+  margin-right: 56px;
+  position: relative;
+  h3 {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: #2F3B66;
+    margin: 0 8px 0 0;
+  }
+}
+.header {
+  margin-bottom: 8px;
+}
+.tooltipIcon {
+  border-radius: 50%;
+  height: 12px;
+  width: 12px;
+  color: #99A4C2;
+  border: 1px solid #99A4C2;
+  cursor: pointer;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 700;
+}
+.tooltipBlock {
+  width: 240px;
+  border: 1px solid rgba(#B2BBD580, .5);
+  font-size: 14px;
+  border-radius: 3px;
+  background: linear-gradient(#FFFFFF, #FAFAFC);
+  box-shadow: 0 1px 2px #E6E8F0;
+  color: #707EA7;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  padding: 12px;
+}

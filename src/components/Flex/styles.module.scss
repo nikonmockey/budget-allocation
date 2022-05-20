@@ -1,0 +1,56 @@
+.flex {
+  display: flex;
+}
+
+.f1 {
+  flex: 1;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.center {
+  align-items: center;
+  justify-content: center;
+}
+
+.jcsb {
+  justify-content: space-between;
+}
+
+.aic {
+  align-items: center;
+}
+
+.ail {
+  align-items: left;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.half {
+  width: 50%;
+}
+
+.third {
+  width: 33.333333%;
+}
+
+.stretch {
+  justify-content: stretch;
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+.relative {
+  position: relative;
+}
+
+.mb24 {
+  margin-bottom: 32px;
+}
