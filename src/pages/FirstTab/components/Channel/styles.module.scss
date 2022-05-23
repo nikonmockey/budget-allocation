@@ -34,6 +34,7 @@
   border-top: 5px solid #B2BBD5;
   margin-left: 14px;
   margin-right: 30px;
+  transition: border .5s;
   &.isOpened {
     border-top: 5px solid transparent;
     border-bottom: 5px solid #B2BBD5;

@@ -20,16 +20,19 @@ export const ChannelsContext = React.createContext({
   setBudget: (id: number, budget: {}) => {},
 });
 
-export const ContextLayout = ({ children, }) => {
+export const ContextLayout = ({ children }) => {
   const [channels, setChannels] = useState([]);
   const [openedChannel, setOpenChannel] = useState(null);
+
+  const id = channels.length === 0 ? 1 : channels[channels.length - 1].id + 1;
   const addChannel = () => setChannels([...channels, {
-    id: channels.length + 1,
-    name: `New Channel ${channels.length + 1}`,
+    id,
+    name: `New Channel ${id}`,
     allocation: 'Equal',
     frequency: FREQUENCY[0],
     budget: {...MONTHS},
   }]);
+
   const removeChannel = (id: number) => setChannels(channels.filter( channel => channel.id !== id ));
   const editChannel = (id: number, name: string) => {
     const newChannels = [...channels];

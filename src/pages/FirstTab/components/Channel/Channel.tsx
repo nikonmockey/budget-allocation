@@ -24,6 +24,7 @@ type Props = {
 
 export const Channel = ({ name, id, allocation, frequency, budget }: Props) => {
   const [isEditingName, setEditing] = useState(false);
+  const [channelName, changeChannelName] = useState(name);
   const [isCardOpened, setCardOpened] = useState(false);
   const {
     channels,
@@ -46,7 +47,13 @@ export const Channel = ({ name, id, allocation, frequency, budget }: Props) => {
   }
   const handleToggleAllocation = () => toggleAllocation(id);
   const handleSelectFrequency = (freq: string) => setFrequency(id, freq);
-  const handleChannelNameChange = (e: ChangeEvent<HTMLInputElement>) => editChannel(id, e.target.value);
+  const handleChannelNameUpdate = (e: ChangeEvent<HTMLInputElement>) => {
+    changeChannelName(e.target.value);
+  }
+  const handleChannelNameChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setEditing(false);
+    editChannel(id, e.target.value);
+  }
 
   const setBudgetCells = () => {
     if (frequency === 'Annually') {
@@ -101,11 +108,11 @@ export const Channel = ({ name, id, allocation, frequency, budget }: Props) => {
             !isEditingName
             ? <p>{name}</p>
             : <input
-                value={name}
+                value={channelName}
                 autoFocus={true}
-                onChange={handleChannelNameChange}
+                onChange={handleChannelNameUpdate}
                 type="text"
-                onBlur={ () => setEditing(false) }
+                onBlur={handleChannelNameChange}
               />
           }
         </Flex>
