@@ -1,15 +1,14 @@
 .container {
-  height: 128px;
   h2 {
     font-weight: 700;
     font-size: 11px;
     line-height: 16px;
     text-transform: uppercase;
     color: #99A4C2;
-    margin: 16px 0 0;
+    margin: 16px 0 32px;
   }
 }
-.header {
+.leftBlock {
   width: 300px;
   flex-shrink: 0;
   background: linear-gradient(90deg, rgba(transparent, 0) 0%, rgba(169, 181, 210, 0.0001) 70%, rgba(112, 126, 167, 0.134454) 100%);
@@ -22,6 +21,9 @@
     line-height: 21px;
     color: #222A41;
   }
+}
+.row {
+  height: 64px;
 }
 .table {
   width: 1640px;
@@ -52,7 +54,7 @@
   width: 116px;
   flex-shrink: 0;
   p {
-    margin: 0 0 12px;
+    margin: 0;
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;

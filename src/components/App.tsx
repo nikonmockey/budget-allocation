@@ -7,24 +7,25 @@ import {
 } from 'pages'
 
 import {
-  MainLayout,
+  ContextLayout,
   Header,
   Tabs,
 } from 'components'
 
 import { tabs_links } from 'utils/consts'
 
-const App = () =>
-  <Router>
-    <MainLayout>
-      <Header />
-      <Tabs />
-      <Routes>
-        <Route path="/" element={<FirstTab />} />
-        <Route path={tabs_links.firsttab} element={<FirstTab />} />
-        <Route path={tabs_links.secondtab} element={<SecondTab />} />
-      </Routes>
-    </MainLayout>
-  </Router>
+const App = () => (
+    <Router>
+      <ContextLayout>
+        <Header />
+        <Tabs />
+        <Routes>
+          <Route path="/" element={<FirstTab />} />
+          <Route path={tabs_links.firsttab} element={<FirstTab />} />
+          <Route path={tabs_links.secondtab} element={<SecondTab />} />
+        </Routes>
+      </ContextLayout>
+    </Router>
+)
 
 export default App

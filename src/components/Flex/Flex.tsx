@@ -20,7 +20,7 @@ type Props = {
   relative?: boolean,
   mb24?: boolean,
   className?: string,
-  onClick?: () => void,
+  onClick?: (...args : any[]) => void,
 }
 
 export const Flex = ({
