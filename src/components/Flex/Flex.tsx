@@ -40,7 +40,6 @@ export const Flex = ({
     mb24,
     className,
     onClick,
-    ...props
   }: Props) =>
     <div
       className={ cx(
@@ -61,7 +60,6 @@ export const Flex = ({
         mb24            && styles.mb24,
       )}
       onClick={onClick}
-      {...props}
     >
       {children}
     </div>

@@ -1,17 +1,32 @@
 import React, { useState } from 'react';
 import { Flex } from 'components';
-import { MONTHS, FREQUENCY } from 'utils/consts';
+import { MONTHS, FREQUENCY } from 'consts';
 
 import styles from './styles.module.scss';
 
-export const BudgetContext = React.createContext({
-  value: 'Equal',
-  toggleAllocation: () => {},
-});
-export const ChannelsContext = React.createContext({
+type channel = {
+  id: number,
+  name: string,
+  allocation: string,
+  frequency: string,
+  budget: {},
+}
+interface ChannelsContextInterface {
+  channels: channel[],
+  openedChannel: number | null,
+  toggleOpenedChannel: (id: number | null) => void,
+  addChannel: () => void,
+  removeChannel: (id: number) => void,
+  editChannel: (id: number, name: string) => void,
+  toggleAllocation: (id: number) => void,
+  setFrequency: (id: number, frequency: string) => void,
+  setBudget: (id: number, budget: {}) => void,
+}
+
+export const ChannelsContext = React.createContext<ChannelsContextInterface>({
   channels: [],
   openedChannel: null,
-  setOpenChannel: (id: number | null) => {},
+  toggleOpenedChannel: (id: number | null) => {},
   addChannel: () => {},
   removeChannel: (id: number) => {},
   editChannel: (id: number, name: string) => {},
@@ -21,10 +36,10 @@ export const ChannelsContext = React.createContext({
 });
 
 export const ContextLayout = ({ children }) => {
-  const [channels, setChannels] = useState([]);
-  const [openedChannel, setOpenChannel] = useState(null);
+  const [channels, setChannels] = useState<channel[]>([]);
+  const [openedChannel, setOpenChannel] = useState<number | null>(null);
 
-  const id = channels.length === 0 ? 1 : channels[channels.length - 1].id + 1;
+  const id = channels.length === 0 ? 1 : channels[channels.length - 1]['id'] + 1;
   const addChannel = () => setChannels([...channels, {
     id,
     name: `New Channel ${id}`,
@@ -32,6 +47,7 @@ export const ContextLayout = ({ children }) => {
     frequency: FREQUENCY[0],
     budget: {...MONTHS},
   }]);
+  const toggleOpenedChannel = (id: number | null) => setOpenChannel(id);
 
   const removeChannel = (id: number) => setChannels(channels.filter( channel => channel.id !== id ));
   const editChannel = (id: number, name: string) => {
@@ -62,7 +78,7 @@ export const ContextLayout = ({ children }) => {
   const channelsObject = {
     channels,
     openedChannel,
-    setOpenChannel,
+    toggleOpenedChannel,
     addChannel,
     removeChannel,
     editChannel,

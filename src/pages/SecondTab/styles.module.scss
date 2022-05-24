@@ -53,11 +53,48 @@
   padding-left: 24px;
   width: 116px;
   flex-shrink: 0;
+  position: relative;
+  &:hover {
+    .pencil {
+      display: block;
+      cursor: pointer;
+    }
+  }
   p {
     margin: 0;
     font-weight: 500;
     font-size: 14px;
     line-height: 20px;
     color: #222A41;
+    margin-right: 8px;
+  }
+  .form {
+    transform: translateX(-24px);
+  }
+  .input {
+    width: 80px;
+    height: 32px;
+    border: 1px solid rgba(178, 187, 213, 0.5);
+    border-radius: 4px;
+    background-color: white;
+  }
+  .ok, .cancel {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 4px;
+    z-index: 100;
+  }
+  .ok {
+    background-color: #2FCF5F;
+  }
+  .cancel {
+    background-color: #EE2032;
+  }
+  .pencil {
+    display: none;
   }
 }

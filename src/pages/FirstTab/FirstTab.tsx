@@ -2,8 +2,6 @@ import React, { useContext } from 'react';
 import { ChannelsContext } from 'components';
 
 import { Channel } from './components/Channel/Channel';
-import styles from './styles.module.scss';
-
 
 export const FirstTab = () => {
   const { channels } = useContext(ChannelsContext);

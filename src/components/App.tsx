@@ -12,7 +12,7 @@ import {
   Tabs,
 } from 'components'
 
-import { tabs_links } from 'utils/consts'
+import { tabs_links } from 'consts'
 
 const App = () => (
     <Router>

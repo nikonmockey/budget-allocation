@@ -1,17 +1,13 @@
 import React, { useContext } from 'react';
-import { ChannelsContext } from 'components';
-
-import { NavLink } from 'react-router-dom';
-import { Flex } from '..';
-import { tabs_links } from 'utils/consts';
+import { ChannelsContext, Flex } from 'components';
 
 import styles from './styles.module.scss';
 
 export const Header = () => {
-  const { addChannel, setOpenChannel } = useContext(ChannelsContext);
+  const { addChannel, toggleOpenedChannel } = useContext(ChannelsContext);
   const handleAddingNewChannel = () => {
     addChannel();
-    setOpenChannel(null);
+    toggleOpenedChannel(null);
   }
 
   return (

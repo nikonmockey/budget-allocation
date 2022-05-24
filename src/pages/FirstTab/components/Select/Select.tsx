@@ -1,7 +1,7 @@
-import React, { useState, ReactNode } from 'react';
+import React, { useState } from 'react';
 import cx from 'classnames';
 import { Flex } from 'components';
-import { FREQUENCY } from 'utils/consts';
+import { FREQUENCY } from 'consts';
 import { Block } from '../Block/Block';
 
 import styles from './styles.module.scss'

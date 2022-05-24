@@ -1,9 +1,7 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { ChangeEvent } from 'react';
 import cx from 'classnames';
 import num from 'numeral';
-import { Flex } from 'components';
-import { FREQUENCY } from 'utils/consts';
-import { Block } from '../Block/Block';
+import { Block } from '..';
 
 import styles from './styles.module.scss'
 

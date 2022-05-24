@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Flex } from 'components'
-import { tabs_links } from 'utils/consts'
+import { tabs_links } from 'consts'
 
 import styles from './styles.module.scss'
 

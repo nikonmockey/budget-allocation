@@ -2,16 +2,13 @@ import React, { useState, useContext, ChangeEvent } from 'react';
 import cx from 'classnames';
 import num from 'numeral';
 import { Flex } from 'components';
-import { PERIODS } from 'utils/consts';
+import { PERIODS } from 'consts';
 import { ChannelsContext } from 'components';
 
 import { ReactComponent as PaidReviewsIcon } from 'assets/icons/paidReviewsIcon.svg';
 import { ReactComponent as Breadcrumbs } from 'assets/icons/breadcrumbs.svg';
 
-import { Block } from '../Block/Block';
-import { Select } from '../Select/Select';
-import { Input } from '../Input/Input';
-import { DoubleButton } from '../DoubleButton/DoubleButton';
+import { Select, Input, DoubleButton } from '..';
 import styles from './styles.module.scss';
 
 type Props = {
@@ -27,9 +24,8 @@ export const Channel = ({ name, id, allocation, frequency, budget }: Props) => {
   const [channelName, changeChannelName] = useState(name);
   const [isCardOpened, setCardOpened] = useState(false);
   const {
-    channels,
     openedChannel,
-    setOpenChannel,
+    toggleOpenedChannel,
     removeChannel,
     editChannel,
     toggleAllocation,
@@ -39,7 +35,7 @@ export const Channel = ({ name, id, allocation, frequency, budget }: Props) => {
   const overallBudget: number = Object.values(budget).reduce( (prev, curr) => prev + curr, 0);
 
   const isOpened = openedChannel === id;
-  const handleOpeningChannel = () => setOpenChannel(isOpened ? null : id);
+  const handleOpeningChannel = () => toggleOpenedChannel(isOpened ? null : id);
   const handleClickOnRemove = () => removeChannel(id);
   const handleClickOnEdit = (name: string) => {
     setEditing(true);
@@ -72,7 +68,7 @@ export const Channel = ({ name, id, allocation, frequency, budget }: Props) => {
     const divededValue = numeralValue.divide(12);
 
     const newBudget = {};
-    const newMap = Object.keys(budget).map( (period) => {
+    Object.keys(budget).map( (period) => {
       newBudget[period] = divededValue.value();
     });
     setBudget(id, newBudget);
@@ -81,17 +77,17 @@ export const Channel = ({ name, id, allocation, frequency, budget }: Props) => {
     const { value } = e.target;
     const numeralValue = num(value || 0);
     const newBudget = {};
-    console.log({ numeralValue, value, budget, overallBudget, period });
+
     if (frequency === 'Annually') {
-      const newMap = Object.keys(budget).map( (name) => {
+      Object.keys(budget).map( (name) => {
         newBudget[name] = numeralValue.value();
       });
     } else if (frequency === 'Quarterly') {
-      const newMap = Object.keys(budget).map( (name) => {
+      Object.keys(budget).map( (name) => {
         newBudget[name] = numeralValue.divide(3).value();
       });
     } else {
-      const newMap = Object.keys(budget).map( (name) => {
+      Object.keys(budget).map( (name) => {
         newBudget[name] = name === period ? numeralValue.value() : budget[name];
       });
     }
@@ -100,7 +96,7 @@ export const Channel = ({ name, id, allocation, frequency, budget }: Props) => {
 
   return (
     <Flex className={styles.container} column>
-      <Flex fullWidth className={styles.header}>
+      <Flex fullWidth className={cx(styles.header, isOpened && styles.opened)}>
         <Flex alignCenter fullWidth onClick={handleOpeningChannel}>
           <div className={cx(styles.triangle, isOpened && styles.isOpened)} />
           <PaidReviewsIcon />
