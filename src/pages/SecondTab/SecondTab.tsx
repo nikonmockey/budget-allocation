@@ -36,7 +36,6 @@ export const SecondTab = () => {
     });
     setBudget(id, newBudget);
     cancelEditing();
-    console.log({ newBudget, channels });
   }
 
   return (
@@ -79,7 +78,6 @@ export const SecondTab = () => {
                                   onChange={handleAmountUpdate}
                                   type="text"
                                   className={styles.input}
-                                  // onChange={ e => handleAmountUpdate(e, id, name)}
                                 />
                                 <Flex center  className={styles.ok} onClick={() => handleAmountChange(id, name, budget)}>✓</Flex>
                                 <Flex center className={styles.cancel} onClick={cancelEditing}>ｘ</Flex>
